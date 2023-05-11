@@ -5,10 +5,7 @@ import geopandas as gpd
 las_file = laspy.read("3dbag_v210908_fd2cee53_lod22_3d_1654.las")
 
 # create a GeoDataFrame from the x,y coordinates of the point cloud
-points = gpd.GeoDataFrame(geometry=gpd.points_from_xy(las_file.x, las_file.y))
-
-# set the CRS to EPSG:7415
-points.crs = "EPSG:7415"
+points = gpd.GeoDataFrame(geometry=gpd.points_from_xy(las_file.x, las_file.y),crs="EPSG:7415")
 
 # convert a shapefile into a geodataframe
 polygon = gpd.read_file("polygon.shp")
